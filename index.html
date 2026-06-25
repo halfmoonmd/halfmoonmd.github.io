@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>halfmoonmd — 앱 런치패드</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f5f6f8;
+    color: #1a1a2e;
+    min-height: 100vh;
+    padding: 40px 24px 60px;
+  }
+
+  header {
+    max-width: 900px;
+    margin: 0 auto 40px;
+  }
+
+  header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a2e;
+    letter-spacing: -0.5px;
+  }
+
+  header p {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #888;
+  }
+
+  .grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    border: 1px solid #ebebeb;
+    transition: box-shadow 0.2s;
+  }
+
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+
+  .card-desc {
+    font-size: 12px;
+    color: #999;
+    margin-top: 3px;
+  }
+
+  .badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .badge-live    { background: #e6f9f0; color: #1a9e60; }
+  .badge-dev     { background: #fff4e0; color: #d4820a; }
+  .badge-wip     { background: #eef2ff; color: #4f6ef7; }
+  .badge-early   { background: #f3f3f3; color: #888; }
+
+  .section {
+    margin-bottom: 12px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #bbb;
+    margin-bottom: 6px;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 11px;
+    background: #f5f6f8;
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+    padding: 3px 8px;
+    color: #555;
+  }
+
+  .tag.branch-dev  { border-color: #ffd080; background: #fffbf0; color: #b07800; }
+  .tag.branch-prod { border-color: #90dbb4; background: #f0faf5; color: #1a7a4a; }
+
+  a.link {
+    font-size: 12px;
+    color: #4f6ef7;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  a.link:hover { text-decoration: underline; }
+
+  a.link svg { width: 11px; height: 11px; flex-shrink: 0; }
+
+  .divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 14px 0;
+  }
+
+  .links-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .account-note {
+    font-size: 10px;
+    color: #bbb;
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🚀 halfmoonmd — 앱 런치패드</h1>
+  <p>GitHub · Supabase · Vercel 링크 모음 | 마지막 업데이트: 2026-06-25</p>
+</header>
+
+<div class="grid">
+
+  <!-- PaySeries_V3 -->
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">💰 PaySeries_V3</div>
+        <div class="card-desc">통합급여달인 — 병의원 급여·인사 관리</div>
+      </div>
+      <span class="badge badge-live">배포완료</span>
+    </div>
+
+    <div class="section">
+      <div class="section-label">GitHub</div>
+      <div class="row">
+        <span class="tag branch-dev">develop</span>
+        <span class="tag branch-prod">main → 자동배포</span>
+      </div>
+      <a class="link" href="https://github.com/halfmoonmd/PaySeries_V3" target="_blank">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        halfmoonmd/PaySeries_V3
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Supabase <span class="account-note">— gmail 계정 (PayDoc's Org)</span></div>
+      <div class="row">
+        <span class="tag branch-prod">배포: gyuryo-dalain (서울)</span>
+      </div>
+      <div class="row">
+        <span class="tag branch-dev">개발: pay-series-dev (싱가포르)</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">배포</div>
+      <div class="links-row">
+        <a class="link" href="https://www.payseries.kr" target="_blank">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="7"/><path d="M8 1s-3 3-3 7 3 7 3 7M8 1s3 3 3 7-3 7-3 7M1 8h14"/></svg>
+          www.payseries.kr
+        </a>
+        <a class="link" href="https://paydoc.payseries.kr" target="_blank">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="7"/><path d="M8 1s-3 3-3 7 3 7 3 7M8 1s3 3 3 7-3 7-3 7M1 8h14"/></svg>
+          paydoc.payseries.kr
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PayAlba -->
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">🏥 PayAlba</div>
+        <div class="card-desc">병원 알바 관리</div>
+      </div>
+      <span class="badge badge-dev">개발중</span>
+    </div>
+
+    <div class="section">
+      <div class="section-label">GitHub</div>
+      <a class="link" href="https://github.com/halfmoonmd/payalba" target="_blank">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        halfmoonmd/payalba
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Supabase <span class="account-note">— naver 계정 (PayAlba Org)</span></div>
+      <div class="row">
+        <span class="tag">payalba (서울)</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">배포</div>
+      <span class="tag" style="color:#bbb;">Vercel 미배포</span>
+    </div>
+  </div>
+
+  <!-- CardPick -->
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">💳 CardPick</div>
+        <div class="card-desc">최적 카드 추천</div>
+      </div>
+      <span class="badge badge-wip">리디자인중</span>
+    </div>
+
+    <div class="section">
+      <div class="section-label">GitHub</div>
+      <div class="row">
+        <span class="tag branch-dev">redesign-pretty-ui (작업중)</span>
+        <span class="tag">main</span>
+      </div>
+      <a class="link" href="https://github.com/halfmoonmd/CardPick" target="_blank">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        halfmoonmd/CardPick
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Supabase</div>
+      <span class="tag" style="color:#bbb;">미사용 (JSON 데이터)</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">배포 / 담당</div>
+      <div class="row">
+        <span class="tag" style="color:#bbb;">Vercel 미배포</span>
+        <span class="tag">Flutter 전환 논의중</span>
+        <span class="tag">담당: 앤티그레비티</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bus_Signal -->
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">🚌 Bus_Signal</div>
+        <div class="card-desc">정류장 버스 탑승 신호 앱</div>
+      </div>
+      <span class="badge badge-early">기획초기</span>
+    </div>
+
+    <div class="section">
+      <div class="section-label">GitHub</div>
+      <span class="tag" style="color:#bbb;">git 초기화 필요</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Supabase</div>
+      <span class="tag" style="color:#bbb;">미정</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">배포</div>
+      <span class="tag" style="color:#bbb;">Flutter 앱 (미배포)</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
