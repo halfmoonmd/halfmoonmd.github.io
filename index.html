@@ -147,6 +147,34 @@
     color: #bbb;
     margin-top: 2px;
   }
+
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 14px;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #4f6ef7;
+    background: #eef1fe;
+    border: 1px solid #c5cdf9;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .copy-btn:hover { background: #d9dffb; }
+
+  .copy-btn.copied {
+    color: #1a9e60;
+    background: #e6f9f0;
+    border-color: #90dbb4;
+  }
+
+  .copy-btn svg { width: 12px; height: 12px; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -207,6 +235,11 @@
         </a>
       </div>
     </div>
+
+    <button class="copy-btn" onclick="copyContext(this, 'payseries')">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M3 11V3a2 2 0 0 1 2-2h8"/></svg>
+      Claude 컨텍스트 복사
+    </button>
   </div>
 
   <!-- PayAlba -->
@@ -258,6 +291,11 @@
       <div class="section-label">배포</div>
       <span class="tag" style="color:#bbb;">Vercel 미배포</span>
     </div>
+
+    <button class="copy-btn" onclick="copyContext(this, 'payalba')">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M3 11V3a2 2 0 0 1 2-2h8"/></svg>
+      Claude 컨텍스트 복사
+    </button>
   </div>
 
   <!-- CardPick -->
@@ -299,6 +337,11 @@
         <span class="tag">담당: 앤티그레비티</span>
       </div>
     </div>
+
+    <button class="copy-btn" onclick="copyContext(this, 'cardpick')">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M3 11V3a2 2 0 0 1 2-2h8"/></svg>
+      Claude 컨텍스트 복사
+    </button>
   </div>
 
   <!-- Bus_Signal -->
@@ -332,9 +375,66 @@
       <div class="section-label">배포</div>
       <span class="tag" style="color:#bbb;">Flutter 앱 (미배포)</span>
     </div>
+
+    <button class="copy-btn" onclick="copyContext(this, 'bussignal')">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M3 11V3a2 2 0 0 1 2-2h8"/></svg>
+      Claude 컨텍스트 복사
+    </button>
   </div>
 
 </div>
+
+<script>
+const CONTEXTS = {
+  payseries: `# 프로젝트: PaySeries_V3 (통합급여달인)
+- **설명**: 병의원 원장을 위한 직원 급여·인사·노무 통합 관리 웹앱
+- **GitHub**: https://github.com/halfmoonmd/PaySeries_V3
+- **배포**: https://paydoc.payseries.kr (main → 자동배포)
+- **스택**: Vanilla JS (프레임워크 없음), localStorage, Supabase (gyuryo-dalain 서울)
+- **개발 브랜치**: develop | **배포 브랜치**: main
+- **로컬 경로**: G:\\내 드라이브\\PaySeries_V3
+- **핵심 파일**: app.html, js/core.js, js/auth.js, js/employees.js, js/edu.js
+- **상태**: 배포완료, 현재 develop 브랜치에서 작업 중`,
+
+  payalba: `# 프로젝트: PayAlba
+- **설명**: 병원 알바 구인·구직 매칭 플랫폼
+- **GitHub**: https://github.com/halfmoonmd/payalba
+- **스택**: Supabase (payalba 서울, naver 계정 / PayAlba Org)
+- **상태**: 인증 완료, 대시보드 연동 중
+- **남은 작업**: hospital-dashboard, worker-dashboard, post-job, jobs
+- **배포**: Vercel 미배포
+- **로컬 경로**: G:\\내 드라이브\\PayAlba`,
+
+  cardpick: `# 프로젝트: CardPick
+- **설명**: 최적 카드 추천 앱
+- **GitHub**: https://github.com/halfmoonmd/CardPick
+- **스택**: JSON 데이터 기반 (Supabase 미사용), Flutter 전환 논의중
+- **현재 브랜치**: redesign-pretty-ui (작업중)
+- **상태**: 리디자인 진행중, 담당: 앤티그레비티
+- **배포**: Vercel 미배포
+- **로컬 경로**: G:\\내 드라이브\\CardPick`,
+
+  bussignal: `# 프로젝트: Bus_Signal
+- **설명**: 정류장 버스 탑승 신호 앱
+- **GitHub**: https://github.com/halfmoonmd/bus_signal
+- **스택**: Flutter 앱
+- **상태**: 기획 초기 단계
+- **Supabase**: 미정
+- **배포**: Flutter 앱 (미배포)
+- **로컬 경로**: G:\\내 드라이브\\bus_signal`,
+};
+
+function copyContext(btn, key) {
+  navigator.clipboard.writeText(CONTEXTS[key]).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2 8 6 12 14 4"/></svg> 복사됨!`;
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M3 11V3a2 2 0 0 1 2-2h8"/></svg> Claude 컨텍스트 복사`;
+    }, 2000);
+  });
+}
+</script>
 
 </body>
 </html>
